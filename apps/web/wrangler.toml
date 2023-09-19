@@ -1,5 +1,3 @@
-# @setup {{}}で囲われている値をアプリのCloudflare環境のものに置き換えてください。
-
 account_id = "{{your-cloudflare-account-id}}"
 compatibility_date = "2023-08-14"
 main = "./build/index.js"

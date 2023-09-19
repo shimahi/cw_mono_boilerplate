@@ -1,0 +1,12 @@
+node_modules/
+*.config.js
+*.config.ts
+*.config.cjs
+*.config.mjs
+.eslintrc.cjs
+.turbo/*
+build/*.js
+scripts/**/*
+_templates/**/*.js
+.ladle
+remix.server.ts

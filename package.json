@@ -1,0 +1,19 @@
+{
+  "name": "workers_sample_app",
+  "version": "1.0.0",
+  "author": "STUDIOREAH",
+  "license": "MIT",
+  "main": "index.js",
+  "packageManager": "pnpm@8.6.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shimahi/cw_mono_boilerplate.git"
+  },
+  "scripts": {},
+  "engines": {
+    "node": ">=18.16.1",
+    "npm": "npm コマンドは使用できません。 pnpm コマンドを利用してください",
+    "yarn": "yarn コマンドは使用できません。 pnpm コマンドを利用してください",
+    "pnpm": ">=8.6.5"
+  }
+}

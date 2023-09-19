@@ -5,6 +5,12 @@
 
 # changedFiles=$(git diff --diff-filter=d --cached --name-only)
 
+# if [[ "$changedFiles" == *apps/web* ]]; then
+#   pnpm web type
+#   pnpm web lint
+# else
+#   echo "husky skipped web"
+# fi
 
 # if [[ "$changedFiles" == *packages/server* ]]; then
 #   pnpm -F "server" "type"

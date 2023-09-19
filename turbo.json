@@ -3,6 +3,11 @@
   "pipeline": {
     "dev": { "dependsOn": ["^dev"], "cache": false },
     "build": { "dependsOn": ["^build"], "outputs": ["dist/**"] },
+    "deploy:dev": { "outputs": [] },
+    "deploy:prod": { "outputs": [] },
+    "migrate:apply-local": { "outputs": [] },
+    "migrate:apply-dev": { "outputs": [] },
+    "migrate:apply-prod": { "outputs": [] },
     "type": { "dependsOn": ["^type"], "outputs": ["dist/**"] },
     "lint": { "outputs": [] },
     "fmt": { "outputs": [] }

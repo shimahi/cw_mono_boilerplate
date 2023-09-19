@@ -1,6 +1,8 @@
 # Web App
 
-Cloudflare Workers上で動かすWebアプリケーションののディレクトリです。
+Cloudflare Workers上で動かすWebアプリケーションのディレクトリです。
+
+Remixのloader/actionからドメインロジックを呼び出し、VMMVアーキテクチャを取り扱うカスタムフックを通してReactフロントエンドに対してデータハイドレーションを行う設計が特徴です。
 
 ### ディレクトリ構成
 
@@ -87,7 +89,7 @@ https://remix.run/docs/en/main/route/action
 - **viewModel.ts** フロントで呼び出せるサーバーのデータを定義する。
 
   - loaderのデータを第1引数、actionを呼び出すmutationを第2引数にとり、template内で使えるstate(データ)とdispatch(操作によって呼ばれる処理)を返すviewModel関数を定義することで、テンプレート内部で**useViewModel**フックが使えるようになる。
-  - mutationはactionに対するfetcherを扱ったオブジェクトで、mutation.mutateメソッドを実行することでactionの処理を呼び出すことができる。
+  - mutationはRemixの[fetcher](https://remix.run/docs/en/main/hooks/use-fetcher)を扱ったオブジェクトで、mutation.mutateメソッドを実行することでactionの処理を呼び出すことができる。
   - Remixの form action (method=POSTでフォーム送信することでaction関数が発火する仕組み) は用いない。これはTemplate下がRemixのAPIになるべく依存しないようにするため。
 
 - **index.ts** Remixの各ページのトップコンポーネント。
@@ -97,7 +99,7 @@ https://remix.run/docs/en/main/route/action
 
 - **template/index.tsx** ページのUIを担うコンポーネント。useViewModelから取得したデータの表示を行う。
 
-これらの仕組みで用いている処理やフックは src/core/architecture を参照
+これらの仕組みで用いている処理やフックは `src/core/architecture` を参照
 
 ---
 

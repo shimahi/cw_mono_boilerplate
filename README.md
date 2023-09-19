@@ -14,10 +14,11 @@ pnpm 8.6.5
   - **web** Remixで立ち上げるWebアプリ Cloudflare Workers にデプロイする
 - **packages** appsが依存するパッケージを記述する
   - **db** データベースのマイグレーション・シーディングに関するCIを管理する
-  - **server** サービスのバックエンドのロジックをパッケージ化したもの
+  - **server** サービスのバックエンドロジックをパッケージ化したもの
 - package.json モノレポ全体で扱うパッケージとコマンドの管理
 - pnpm-lock.yaml パッケージの依存関係のロックファイル
 - pnpm-workspace.yaml モノレポの設定ファイル
+- tsconfig.json 共通のTypeScriptの設定
 - turbo.json モノレポライブラリのturborepoの設定
 
 ### 事前準備
@@ -32,16 +33,38 @@ $ wrangler login
 
 ### 開発環境構築
 
-1. ローカル環境変数の設定
+#### 1. Wrangler環境の設定
 
-`apps/web` 下の `.dev.vars.sample` を複製し、 `.dev.vars` を `apps/web` 下に配置する。ここにローカルで必要な環境変数を設定する。
+以下ファイルの{{}}で囲われている部分をCloudflareプロジェクトの値に書き換えてください
 
-2. パッケージのセットアップ
+- `apps/web` 下の `wrangler.toml` を確認し、CloudflareのアカウントID、D1とKVのID・プロジェクト名などを設定する。
+- `packages/db` 下の `wrangler.toml` についても同様にD1のプロパティを設定する。
+- `packages/db` 下の `package.json`のスクリプトに書いてあるマイグレーションコマンドの適用先をD1のプロジェクト名に変更する。
 
-以下コマンドでパッケージの依存関係を設定し、 `server` パッケージをビルドする
+#### 2. ローカル環境変数の設定
+
+- `apps/web` 下の `.dev.vars.sample` を複製し、 `.dev.vars` を `apps/web` 下に配置する。ここにローカルで必要な環境変数を設定する。
+- `apps/web` 下の `.env.sample` を複製し `.env` を `apps/web` 下に配置する。ここにWranglerのCIを実行する際の環境変数を設定する。
+
+#### 3. CI環境変数
+
+Github ActionsのSecretsに、以下の環境変数を設定してください。
+
+- `CLOUDFLARE_API_TOKEN` CloudflareのAPIトークン。
+- `VERCEL_TEAM_SLUG` Vercelのチーム名。slugの値で指定する。
+- `VERCEL_TOKEN` Vercelアカウントのトークン。Turborepoでビルドキャッシュを適用するために使う使う。
+
+### ローカル環境のセットアップ
+
+以下コマンドでパッケージの依存関係を設定し、ローカルのマイグレーションを適用する。これを実行することでローカルサーバーの立ち上げが可能になる。
 
 ```bash
 $ pnpm run setup
+```
+
+```bash
+# ローカルサーバーの起動
+$ pnpm dev
 ```
 
 ### パッケージの追加
@@ -61,8 +84,6 @@ $ pnpm {ワークスペース名} add {パッケージ名} (-D)
 # ルートディレクトリにインストール
 $ pnpm add {パッケージ名} -D -w
 ```
-
----
 
 ### リファレンス
 

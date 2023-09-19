@@ -1,0 +1,9 @@
+node_modules/
+*.config.js
+.eslintrc.cjs
+.turbo/*
+build/*.js
+scripts/**/*
+dist/*
+tsconfig.tsbuildinfo
+../apps/*

@@ -5,6 +5,11 @@
   "scripts": {
     "// ↓ serverで定義したスキーマからマイグレーションファイルを生成するコマンド": "",
     "migrate:gen": "pnpm run --dir ../server migrate:gen",
+    "// ↓ マイグレーションファイルをローカルに適用するコマンド": "",
+    "migrate:apply-local": "pnpm zx ./scripts/apply.mjs",
+    "// ↓ マイグレーションファイルをリモート本番環境のd1プロジェクトに適用するコマンド": "",
+    "// @setup ↓ {{}}で囲われているD1プロジェクトの名前をアプリのCloudflare環境のものに書き換えてください": "",
+    "migrate:apply-prod": "wrangler d1 migrations apply {{your-d1-development-project}}",
     "wrangler": "wrangler"
   },
   "devDependencies": {

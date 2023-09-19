@@ -1,0 +1,37 @@
+# @setup {{}}で囲われている値をアプリのCloudflare環境のものに置き換えてください。
+
+account_id = "{{your-cloudflare-account-id}}"
+compatibility_date = "2023-08-14"
+main = "./build/index.js"
+
+# ローカルのworkers環境。ローカルであってもCloudflare環境の指定が必要。ここではdevと同じものを指定。
+d1_databases = [
+  { binding = "DB", name = "{{your-d1-development-project}}", database_id = "{{your-d1-development-id}}" },
+]
+kv_namespaces = [
+  { binding = "SESSION_KV", preview_id = "{{your-kv-preview-id}}", id="{{your-kv-preview-id}}" }
+]
+
+[site]
+bucket = "./public"
+
+
+[env.dev] # 開発環境のworkers環境
+name = "{{your-cw-development-project}}"
+route = "{{your.development.cw.domain}}"
+d1_databases = [
+  { binding = "DB", name = "{{your-d1-development-project}}", database_id = "{{your-d1-development-id}}" },
+]
+kv_namespaces = [
+  { binding = "SESSION_KV", id = "{{your-kv-development-id}}" }
+]
+
+[env.prod] # 本番環境のworkers環境
+name = "{{your-cw-production-project}}"
+route = "{{your.production.cw.domain}}"
+d1_databases = [
+  { binding = "DB", name = "{{your-d1-production-project}}", database_id = "{{your-d1-production-id}}" },
+]
+kv_namespaces = [
+  { binding = "SESSION_KV", id = "{{your-kv-production-id}}" }
+]

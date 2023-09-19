@@ -1,5 +1,5 @@
 {
-  "name": "workers_sample_app",
+  "name": "cw_mono_boilerplate",
   "version": "1.0.0",
   "author": "STUDIOREAH",
   "license": "MIT",
@@ -9,14 +9,21 @@
     "url": "https://github.com/shimahi/cw_mono_boilerplate.git"
   },
   "scripts": {
+    "web": "pnpm -F \"web\"",
     "db": "pnpm -F \"db\"",
     "server": "pnpm -F \"server\"",
+    "reset": "rm -rf node_modules **/**/node_modules **/**/.cache **/**/.turbo **/**/build **/**/dist **/**/.wrangler",
+    "setup": "pnpm reset && pnpm i && pnpm build:server && pnpm db migrate:apply-local",
     "type": "turbo type",
+    "dev": "turbo dev --parallel",
     "migrate:apply-local": "turbo run migrate:apply-local",
     "migrate:apply-dev": "turbo run migrate:apply-dev",
     "migrate:apply-prod": "turbo run migrate:apply-prod",
     "build": "turbo build",
+    "build:app": "turbo build --filter ./apps/web",
     "build:server": "turbo build --filter ./packages/server",
+    "deploy:dev": "turbo deploy:dev",
+    "deploy:prod": "turbo deploy:prod",
     "prepare": "husky install",
     "lint": "turbo run lint",
     "fmt": "turbo fmt"

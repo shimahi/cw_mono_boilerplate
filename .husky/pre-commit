@@ -5,6 +5,7 @@
 
 changedFiles=$(git diff --diff-filter=d --cached --name-only)
 
+
 if [[ "$changedFiles" == *packages/server* ]]; then
   pnpm -F "server" "type"
   pnpm -F "server" "lint"

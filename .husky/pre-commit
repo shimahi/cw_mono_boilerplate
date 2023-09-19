@@ -1,21 +1,21 @@
-# #!/usr/bin/env sh
-# . "$(dirname -- "$0")/_/husky.sh"
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-# # 変更が含まれているディレクトリに対してlint-stagedを実行
+# 変更が含まれているディレクトリに対してlint-stagedを実行
 
-# changedFiles=$(git diff --diff-filter=d --cached --name-only)
+changedFiles=$(git diff --diff-filter=d --cached --name-only)
 
-# if [[ "$changedFiles" == *apps/web* ]]; then
-#   pnpm web type
-#   pnpm web lint
-# else
-#   echo "husky skipped web"
-# fi
+if [[ "$changedFiles" == *apps/web* ]]; then
+  pnpm web type
+  pnpm web lint
+else
+  echo "husky skipped web"
+fi
 
-# if [[ "$changedFiles" == *packages/server* ]]; then
-#   pnpm -F "server" "type"
-#   pnpm -F "server" "lint"
-#   pnpm -F "server" "test"
-# else
-#   echo "husky skipped server"
-# fi
+if [[ "$changedFiles" == *packages/server* ]]; then
+  pnpm -F "server" "type"
+  pnpm -F "server" "lint"
+  pnpm -F "server" "test"
+else
+  echo "husky skipped server"
+fi

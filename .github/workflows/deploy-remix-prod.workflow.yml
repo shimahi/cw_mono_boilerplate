@@ -1,0 +1,34 @@
+# RemixアプリをWorkersの本番環境にデプロイする。main向けにPRを作成した時に実行される。
+name: Deploy Remix Prod to Cloudflare Workers
+on:
+  push:
+    paths:
+      - 'apps/web/**'
+      - 'packages/server/**'
+      - '.github/workflows/deploy-remix-prod.workflow.yml'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Cloudflare Workers with Wrangler (Prod)
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      TURBO_TEAM: ${{ secrets.VERCEL_TEAM_SLUG }}
+      NO_D1_WARNING: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2.2.2
+      - name: Install Deps
+        run: pnpm install --frozen-lockfile
+      - name: Build App
+        run: pnpm run build
+      - name: Run deploy script
+        run: pnpm run deploy:prod
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        working-directory: .

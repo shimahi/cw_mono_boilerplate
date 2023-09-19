@@ -11,8 +11,7 @@ import 'zx/globals'
 await $`rm -rf ../../apps/**/.wrangler`
 
 // マイグレーションを実行し、.wranglerを作成
-// @setup {{}}で囲われているD1プロジェクトの名前をアプリのCloudflare環境のものに書き換えてください
-await $`pnpm wrangler d1 migrations apply {{your-d1-development-project}} --local`
+await $`pnpm wrangler d1 migrations apply sample-app-db --local`
 
 // マイグレーションファイルをapps下のクライアントのディレクトリにコピー
 await $`cp -r .wrangler ../../apps/web/.wrangler`

@@ -9,7 +9,16 @@
     "type": "git",
     "url": "https://github.com/shimahi/cw_mono_boilerplate.git"
   },
-  "scripts": {},
+  "scripts": {
+    "server": "pnpm -F \"server\"",
+    "type": "turbo type",
+    "dev": "turbo dev --parallel",
+    "build": "turbo build",
+    "build:server": "turbo build --filter ./packages/server"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.14"
+  },
   "engines": {
     "node": ">=18.16.1",
     "npm": "npm コマンドは使用できません。 pnpm コマンドを利用してください",

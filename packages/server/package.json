@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "packageManager": "pnpm@8.6.5",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "tsc -p ./tsconfig.json -w",
+    "build": "tsc -p ./tsconfig.json",
+    "type": "tsc -p ./tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=18.16.1",
+    "npm": "npm コマンドは使用できません。 pnpm コマンドを利用してください",
+    "yarn": "yarn コマンドは使用できません。 pnpm コマンドを利用してください",
+    "pnpm": ">=8.6.5"
+  }
+}

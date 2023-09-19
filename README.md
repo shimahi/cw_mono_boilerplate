@@ -1,5 +1,9 @@
 # Workers Remix Boilerplate
 
+Cloudflare WorkersのスタックでWebアプリケーションを開発するためのボイラープレートです。
+
+各種READMEの手順に従って開発環境を構築してください。
+
 ### 実行環境
 
 Node.js 18.16.1

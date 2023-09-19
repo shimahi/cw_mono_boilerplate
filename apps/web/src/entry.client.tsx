@@ -8,7 +8,9 @@ startTransition(() => {
   hydrateRoot(
     document,
     <StrictMode>
+      <AppThemeProvider>
         <RemixBrowser />
+      </AppThemeProvider>
     </StrictMode>,
   )
 })

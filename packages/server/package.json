@@ -5,11 +5,35 @@
   "scripts": {
     "dev": "tsc -p ./tsconfig.json -w",
     "build": "tsc -p ./tsconfig.json",
-    "type": "tsc -p ./tsconfig.json"
+    "type": "tsc -p ./tsconfig.json",
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "// ↓src/schema/index.tsをもとにマイグレーションファイルを作るコマンド": "",
+    "migrate:gen": "drizzle-kit generate:sqlite --out ../db/migrations --schema src/schemas/index.ts",
+    "lint": "eslint 'src/**/*.ts' --fix",
+    "fmt": "prettier --write \"**/*.ts\""
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.28.5"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
-    "typescript": "^5.0.4"
+    "@types/better-sqlite3": "^7.6.4",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@vitest/coverage-c8": "^0.33.0",
+    "@vitest/ui": "^0.33.0",
+    "better-sqlite3": "^8.4.0",
+    "drizzle-kit": "^0.19.13",
+    "eslint": "^8.38.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "fishery": "^2.2.2",
+    "typescript": "^5.0.4",
+    "vite": "^4.4.7",
+    "vitest": "^0.33.0"
   },
   "engines": {
     "node": ">=18.16.1",

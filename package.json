@@ -3,20 +3,27 @@
   "version": "1.0.0",
   "author": "STUDIOREAH",
   "license": "MIT",
-  "main": "index.js",
   "packageManager": "pnpm@8.6.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/shimahi/cw_mono_boilerplate.git"
   },
   "scripts": {
+    "db": "pnpm -F \"db\"",
     "server": "pnpm -F \"server\"",
     "type": "turbo type",
-    "dev": "turbo dev --parallel",
+    "migrate:apply-local": "turbo run migrate:apply-local",
+    "migrate:apply-dev": "turbo run migrate:apply-dev",
+    "migrate:apply-prod": "turbo run migrate:apply-prod",
     "build": "turbo build",
-    "build:server": "turbo build --filter ./packages/server"
+    "build:server": "turbo build --filter ./packages/server",
+    "prepare": "husky install",
+    "lint": "turbo run lint",
+    "fmt": "turbo fmt"
   },
   "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.3.0",
     "turbo": "^1.10.14"
   },
   "engines": {

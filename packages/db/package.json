@@ -1,0 +1,20 @@
+{
+  "name": "db",
+  "packageManager": "pnpm@8.6.5",
+  "main": "./dist/index.js",
+  "scripts": {
+    "// ↓ serverで定義したスキーマからマイグレーションファイルを生成するコマンド": "",
+    "migrate:gen": "pnpm run --dir ../server migrate:gen",
+    "wrangler": "wrangler"
+  },
+  "devDependencies": {
+    "wrangler": "^3.5.1",
+    "zx": "^7.2.3"
+  },
+  "engines": {
+    "node": ">=18.16.1",
+    "npm": "npm コマンドは使用できません。 pnpm コマンドを利用してください",
+    "yarn": "yarn コマンドは使用できません。 pnpm コマンドを利用してください",
+    "pnpm": ">=8.6.5"
+  }
+}

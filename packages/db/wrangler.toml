@@ -1,0 +1,13 @@
+# @setup {{}}で囲われている値をアプリのCloudflare環境のものに置き換えてください。
+
+# 開発環境のD1プロジェクト
+[[d1_databases]]
+binding = "DB"
+database_name = "{{your-d1-development-project}}"
+database_id = "{{your-d1-development-id}}"
+
+# 本番環境のD1プロジェクト
+[[d1_databases]]
+binding = "DB"
+database_name = "{{your-d1-production-project}}"
+database_id = "{{your-d1-production-id}}"

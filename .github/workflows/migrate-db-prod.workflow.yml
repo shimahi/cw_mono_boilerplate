@@ -1,6 +1,4 @@
 # 本願環境のDBに対してマイグレーションを実行する。 mainマージ時に実行する
-# TODO: 現在このworkflowは動かない。マイグレーションはCLI上で行うこと
-# バグについてissue報告済 https://github.com/cloudflare/workers-sdk/issues/3598
 
 name: Migrate Database Prod to Cloudflare D1
 on:
@@ -9,8 +7,7 @@ on:
       - 'packages/db/migrations/**'
       - '.github/workflows/migrate-db-prod.workflow.yml'
     branches:
-      # - main
-      - stop # 返答やアップデートがあれば、発火ブランチをmainに修正する。
+      - main
   workflow_dispatch:
 
 jobs:

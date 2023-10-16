@@ -1,13 +1,10 @@
 # dev環境のDBに対してマイグレーションを実行する。GitHub Actionsで手動実行する
-# TODO: 現在このworkflowは動かない。マイグレーションはCLI上で行うこと
-# バグについてissue報告済 https://github.com/cloudflare/workers-sdk/issues/3598
 
 name: Migrate Database Dev to Cloudflare D1
 on:
   pull_request:
     branches:
-      # - main
-      - 'stop' # 返答やアップデートがあれば、発火先ブランチをmainに修正する。
+      - main
     paths:
       - 'packages/db/migrations/**'
       - '.github/workflows/migrate-db-dev.workflow.yml'

@@ -31,6 +31,22 @@ import { UserDomain } from 'server'
 const userDomain = new UserDomain({ context })
 ```
 
+### DBスキーマの更新方法
+
+./src/schemas/index.ts にDrizzle ORMライブラリを使ってSQLiteのスキーマを定義する。  
+その後、`migrate:gen`コマンドを実行することでDrizzle CLIによってマイグレーションファイルが生成される。
+
+これにより生成されたマイグレーションファイルは packages/db/migrations/ に保存され、同ディレクトリ内でWranglerを実行することでローカル・リモート各種へのマイグレーションを行うことができる。
+
+```bash
+# ./src/schemas/index.tsの内容を元に、にマイグレーションファイルを生成する
+$ pnpm migrate:gen
+
+# →→→ packages/db/migrations に生成されたマイグレーションファイルを使って、各種クライアントに適用する作業を行う
+```
+
+cf [SQL schema declaration - Drizzle](https://orm.drizzle.team/docs/sql-schema-declaration)
+
 ### リファレンス
 
 - [Vitest](https://vitest.dev/) Vite製テストランナー
